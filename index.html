@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <script type='text/javascript' src='//pl28097546.effectivegatecpm.com/da/4f/70/da4f7026fbb3bbd9e869da55760f091e.js'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo to PDF Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Photo to PDF Converter</h1>
+            <p class="text-gray-600">Upload your photos and convert them to a PDF document</p>
+            <a href="https://www.effectivegatecpm.com/uh5xv4zx?key=6414495a8ce07f431190797c5b0d7c49" class="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Sponsored link</a>
+        </header>
+
+        <main class="bg-white rounded-2xl shadow-xl p-8">
+            <!-- Upload Area -->
+            <section class="mb-8">
+                <div id="uploadArea" class="border-3 border-dashed border-gray-300 rounded-xl p-12 text-center hover:border-blue-400 transition-colors cursor-pointer bg-gray-50 hover:bg-blue-50">
+                    <div class="mb-4">
+                        <svg class="mx-auto h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                    </div>
+                    <p class="text-lg font-medium text-gray-700 mb-2">Drop photos here or click to browse</p>
+                    <p class="text-sm text-gray-500">Supports JPG, PNG, GIF, BMP formats</p>
+                    <input type="file" id="fileInput" multiple accept="image/*" class="hidden">
+                </div>
+            </section>
+
+            <!-- Photo Preview Grid -->
+            <section id="photoSection" class="mb-8 hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-semibold text-gray-800">Your Photos</h2>
+                    <div class="space-x-2">
+                        <button id="clearAllBtn" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+                            Clear All
+                        </button>
+                        <button id="addMoreBtn" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                            Add More Photos
+                        </button>
+                    </div>
+                </div>
+                <div id="photoGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Photos will be added here dynamically -->
+                </div>
+            </section>
+
+            <!-- PDF Generation Controls -->
+            <section id="controlsSection" class="hidden">
+                <div class="border-t pt-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">PDF Options</h3>
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Page Size</label>
+                            <select id="pageSize" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="a4">A4</option>
+                                <option value="letter">Letter</option>
+                                <option value="legal">Legal</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Orientation</label>
+                            <select id="orientation" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="portrait">Portrait</option>
+                                <option value="landscape">Landscape</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Image Fit</label>
+                            <select id="imageFit" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="contain">Fit to Page</option>
+                                <option value="fill">Fill Page</option>
+                                <option value="actual">Actual Size</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Quality</label>
+                            <select id="quality" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <button id="generatePdfBtn" class="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <span>Generate PDF</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading Indicator -->
+            <div id="loadingIndicator" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div class="bg-white rounded-lg p-6 flex items-center space-x-3">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                    <span class="text-gray-700">Generating PDF...</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="text/javascript">
+        atOptions = {
+            'key' : 'a6d5a6f2590671624de92ebcd169d62d',
+            'format' : 'iframe',
+            'height' : 60,
+            'width' : 468,
+            'params' : {}
+        };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/a6d5a6f2590671624de92ebcd169d62d/invoke.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
